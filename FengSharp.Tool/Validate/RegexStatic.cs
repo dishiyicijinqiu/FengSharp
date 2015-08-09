@@ -7,7 +7,16 @@ namespace FengSharp.Tool.Validate
     /// </summary>
     public class RegexStatic
     {
-        public static RegexValidateStrings RegexValidateStrings { get; set; }
+        private static RegexValidateStrings _RegexValidateStrings;
+        public static RegexValidateStrings RegexValidateStrings
+        {
+            get
+            {
+                if (_RegexValidateStrings == null)
+                    _RegexValidateStrings = new RegexValidateStrings();
+                return _RegexValidateStrings;
+            }
+        }
     }
     public class RegexValidateStrings
     {
