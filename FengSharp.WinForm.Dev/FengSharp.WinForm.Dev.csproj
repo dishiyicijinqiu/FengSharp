@@ -56,12 +56,19 @@
     <Compile Include="TextEdit_TimeStyle.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Validate\CustomRegexValidationRule.cs" />
     <Compile Include="XtraMessageBoxEx.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Form_Exit.resx">
       <DependentUpon>Form_Exit.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FengSharp.Tool\FengSharp.Tool.csproj">
+      <Project>{f9a88bfb-c15b-43a0-bd3f-64399ecd6d98}</Project>
+      <Name>FengSharp.Tool</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

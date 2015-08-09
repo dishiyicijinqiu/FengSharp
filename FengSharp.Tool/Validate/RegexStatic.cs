@@ -7,37 +7,38 @@ namespace FengSharp.Tool.Validate
     /// </summary>
     public class RegexStatic
     {
-        public RegexString RegexStrings { get; set; }
+        public static RegexValidateStrings RegexValidateStrings { get; set; }
     }
-    public class RegexString
+    public class RegexValidateStrings
     {
-        public string this[string key]
+        private const string IpString = @"^(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9])\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[1-9]|0)\.(25[0-5]|2[0-4][0-9]|[0-1]{1}[0-9]{2}|[1-9]{1}[0-9]{1}|[0-9])$";
+        private const string TelPhoneString = @"(\d{11})\b";
+        private const string MobilePhoneString = @"(\d{3}-\d{8}|\d{4}-\d{8}|\d{4}-\d{7}|\d{11})\b";
+        private const string EmailString = @"[\w-]+@[\w-]+(\.(\w)+)*(\.(\w){2,3})";
+        public string this[RegexType regexType]
         {
             get
             {
-                return GetGenerateRegex()[key].ToString();
+                switch (regexType)
+                {
+                    case RegexType.Ip:
+                        return IpString;
+                    case RegexType.TelPhone:
+                        return TelPhoneString;
+                    case RegexType.MobilePhone:
+                        return MobilePhoneString;
+                    case RegexType.Email:
+                    default:
+                        return EmailString;
+                }
             }
         }
-        private Hashtable GetGenerateRegex()
-        {
-            Hashtable ht = new Hashtable();
-            ht.Add("电话号码", @"(\d{3}-\d{8}|\d{4}-\d{8}|\d{4}-\d{7})\b");
-            ht.Add("电话号码或手机", @"(\d{3}-\d{8}|\d{4}-\d{8}|\d{4}-\d{7}|\d{11})\b");
-            ht.Add("手机", @"(\d{11})\b");
-            ht.Add("邮政编码", @"\d{6}");
-            ht.Add("身份证 15位|18位", @"(\d{15}$|^\d{18}$|^\d{17}(\d|X|x))$");
-            ht.Add("日期", @"(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1,3-9]|1[0-2])[\/\-\.](?:29|30))(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1,3,5,7,8]|1[02])[\/\-\.]31)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])[\/\-\.]0?2[\/\-\.]29)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:16|[2468][048]|[3579][26])00[\/\-\.]0?2[\/\-\.]29)(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?$|^(?:(?:1[6-9]|[2-9]\d)?\d{2}[\/\-\.](?:0?[1-9]|1[0-2])[\/\-\.](?:0?[1-9]|1\d|2[0-8]))(?: (?:0?\d|1\d|2[0-3])\:(?:0?\d|[1-5]\d)\:(?:0?\d|[1-5]\d)(?: \d{1,3})?)?");
-            ht.Add("Email", @"[\w-]+@[\w-]+(\.(\w)+)*(\.(\w){2,3})");
-            ht.Add("URL", @"[a-zA-z]+:\/\/[^\s]*");
-            ht.Add("IPV4", @"(\d+)\.(\d+)\.(\d+)\.(\d+)");
-            ht.Add("数字", @"-?(\d)+\.?(\d)*");
-            ht.Add("整数", @"-?\d+");
-            ht.Add("浮点数", @"(-?\d+)(\.\d+)?");
-            ht.Add("字母", @"[A-Za-z]+");
-            ht.Add("大写字母", @"[A-Z]+");
-            ht.Add("小写字母", @"[a-z]+");
-            ht.Add("中文字符", @"[\u4e00-\u9fa5](\s*[\u4e00-\u9fa5])*$");
-            return ht;
-        }
+    }
+    public enum RegexType
+    {
+        Ip,
+        TelPhone,
+        MobilePhone,
+        Email,
     }
 }
