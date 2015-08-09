@@ -38,6 +38,8 @@ namespace FengSharp.WinForm.Dev.Validate
     {
         public override bool Validate(Control control, object value)
         {
+            if (value == null)
+                return false;
             return Regex.IsMatch(value.ToString(), RegexStatic.RegexValidateStrings[RegexType.Ip]);
         }
     }
@@ -46,6 +48,8 @@ namespace FengSharp.WinForm.Dev.Validate
     {
         public override bool Validate(Control control, object value)
         {
+            if (value == null)
+                return false;
             return Regex.IsMatch(value.ToString(), RegexStatic.RegexValidateStrings[RegexType.TelPhone]);
         }
     }
@@ -54,6 +58,8 @@ namespace FengSharp.WinForm.Dev.Validate
     {
         public override bool Validate(Control control, object value)
         {
+            if (value == null)
+                return false;
             return Regex.IsMatch(value.ToString(), RegexStatic.RegexValidateStrings[RegexType.MobilePhone]);
         }
     }
@@ -62,6 +68,8 @@ namespace FengSharp.WinForm.Dev.Validate
     {
         public override bool Validate(Control control, object value)
         {
+            if (value == null)
+                return false;
             return Regex.IsMatch(value.ToString(), RegexStatic.RegexValidateStrings[RegexType.Email]);
         }
     }
