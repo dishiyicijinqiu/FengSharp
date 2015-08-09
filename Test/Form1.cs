@@ -13,7 +13,8 @@ namespace Test
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            var result = RegexStatic.RegexValidateStrings;
+            ClassLibrary1.Class1 class1 = new ClassLibrary1.Class1();
+            MessageBox.Show(class1.GetResourceString());
         }
     }
 }
