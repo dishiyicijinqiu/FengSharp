@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Security.Cryptography;
 
-namespace FengSharp.Tool
+namespace FengSharp.Tool.EnDeCrypt
 {
     public class CSharpEncrypt
     {

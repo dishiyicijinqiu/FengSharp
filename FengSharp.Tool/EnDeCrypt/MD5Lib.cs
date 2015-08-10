@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.IO;
 
-namespace FengSharp.Tool
+namespace FengSharp.Tool.EnDeCrypt
 {
     public class MD5Lib
     {
