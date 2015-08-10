@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cache\MemoryCacheEx.cs" />
+    <Compile Include="EnDeCrypt\CSharpEncrypt.cs" />
+    <Compile Include="EnDeCrypt\MD5Lib.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Validate\RegexStatic.cs" />
   </ItemGroup>
