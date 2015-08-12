@@ -41,11 +41,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DataGridView_ShowLine.cs">
+    <Compile Include="Components\DataGridView_ShowLine.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="MessageBoxEx.cs" />
+    <Compile Include="Components\MessageBoxEx.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 
-namespace FengSharp.WinForm.Dev
+namespace FengSharp.WinForm.Dev.Components
 {
 
     [ToolboxItem(true)]

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FengSharp.WinForm.Dev
+namespace FengSharp.WinForm.Dev.Forms
 {
     public partial class Form_Exit : DevExpress.XtraEditors.XtraForm
     {

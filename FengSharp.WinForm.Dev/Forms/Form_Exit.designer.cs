@@ -1,4 +1,4 @@
-﻿namespace FengSharp.WinForm.Dev
+﻿namespace FengSharp.WinForm.Dev.Forms
 {
     partial class Form_Exit
     {

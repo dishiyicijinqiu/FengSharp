@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Windows.Forms;
 
-namespace FengSharp.WinForm
+namespace FengSharp.WinForm.Components
 {
 #pragma warning disable 0618
     public class MessageBoxEx
