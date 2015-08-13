@@ -12,9 +12,9 @@ using FengSharp.Update;
 
 namespace FengSharp.UpdateMaker
 {
-    public partial class Form1 : Form
+    public partial class MainForm : Form
     {
-        public Form1()
+        public MainForm()
         {
             InitializeComponent();
             InitDropSupport();
@@ -41,17 +41,18 @@ namespace FengSharp.UpdateMaker
                     !System.IO.File.Exists(files[0])
                     ||
                     !(files[0].EndsWith(".xml", StringComparison.OrdinalIgnoreCase) || files[0].EndsWith(".auproj", StringComparison.OrdinalIgnoreCase))
-                    ) return;
+                    )
+                    return;
 
                 e.Effect = DragDropEffects.Link;
             };
             this.DragDrop += (s, e) =>
             {
-                //var file = (e.Data as DataObject).GetFileDropList()[0];
-                //if (string.Compare(System.IO.Path.GetExtension(file), ".auproj", true) == 0)
-                //    OpenProject(file);
-                //else
-                //    OpenXML(file);
+                var file = (e.Data as DataObject).GetFileDropList()[0];
+                if (string.Compare(System.IO.Path.GetExtension(file), ".auproj", true) == 0)
+                    OpenProject(file);
+                else
+                    OpenXML(file);
             };
             //升级包
             this.txtNewSoftDir.DragEnter += (s, e) =>
@@ -64,7 +65,8 @@ namespace FengSharp.UpdateMaker
                     (files = doe.GetFileDropList()).Count == 0
                     ||
                     !System.IO.Directory.Exists(files[0])
-                    ) return;
+                    )
+                    return;
 
                 e.Effect = DragDropEffects.Link;
             };
@@ -79,7 +81,8 @@ namespace FengSharp.UpdateMaker
                     (files = doe.GetFileDropList()).Count == 0
                     ||
                     !System.IO.Directory.Exists(files[0])
-                    ) return;
+                    )
+                    return;
 
                 e.Effect = DragDropEffects.Link;
             };
@@ -107,7 +110,8 @@ namespace FengSharp.UpdateMaker
                     !System.IO.File.Exists(files[0])
                     ||
                     !files[0].EndsWith(".rtf", StringComparison.OrdinalIgnoreCase)
-                    ) return;
+                    )
+                    return;
 
                 e.Effect = DragDropEffects.Link;
             };
@@ -201,7 +205,8 @@ namespace FengSharp.UpdateMaker
             if (System.IO.Directory.GetFiles(SelectedPackagePath).Length > 0 || System.IO.Directory.GetDirectories(SelectedPackagePath).Length > 0)
             {
                 if (MessageBox.Show("自动更新程序将会生成一个或多个文件（包括xml、zip文件等），而您当前选择的升级包保存文件夹不是空的，这可能会导致同名的文件被覆盖。确定继续吗？", "提示", MessageBoxButtons.OKCancel, MessageBoxIcon.Question)
-                    != System.Windows.Forms.DialogResult.OK) return;
+                    != System.Windows.Forms.DialogResult.OK)
+                    return;
             }
 
             if (string.IsNullOrEmpty(this.txtAppName.Text)) { epp.SetError(this.txtAppName, "请输入应用程序名"); return; }
@@ -216,7 +221,7 @@ namespace FengSharp.UpdateMaker
             }
             if (!System.IO.Directory.Exists(this.SelectedNewSoftDirPath)) { epp.SetError(this.txtNewSoftDir, "请选择新程序的目录"); return; }
             if (string.IsNullOrEmpty(this.SelectedPackagePath)) { epp.SetError(this.txtPackagePath, "请选择打包后的组件和升级信息文件所在路径"); return; }
-            if (string.IsNullOrEmpty(this.txtStartApp.Text)) { epp.SetError(this.txtStartApp, "请输入主程序位置"); return; }
+            if (string.IsNullOrEmpty(this.SelectedStartAppPath)) { epp.SetError(this.txtStartApp, "请输入主程序位置"); return; }
             if (!System.IO.Directory.Exists(System.IO.Path.GetDirectoryName(this.SelectedPackagePath))) { epp.SetError(this.txtPackagePath, "文件包所在目录不存在"); return; }
             //删除原始包的文件
             if (CurrentUpdateInfo != null)
@@ -227,7 +232,10 @@ namespace FengSharp.UpdateMaker
                     CurrentUpdateInfo.UpdateFiles.ForEach(s =>
                     {
                         var path = System.IO.Path.Combine(root, s.FilePath);
-                        if (System.IO.File.Exists(path)) System.IO.File.Delete(path);
+                        if (System.IO.File.Exists(path))
+                        {
+                            System.IO.File.Delete(path);
+                        }
                     });
                 }
             }
@@ -259,26 +267,35 @@ namespace FengSharp.UpdateMaker
             var builder = new UpdateFileBuilder()
             {
                 UpdateInfo = info,
-                CompressXmlFile = Invoke(() => options.CompressXmlFile),
-                EnableIncreaseUpdate = Invoke(() => options.EnableIncreaseUpdate && fileConfig.HasIncreaseUpdateFile),
-                CreateCompatiblePackage = Invoke(() => options.CreateCompatiblePackage),
+                AllFiles = fileConfig.AllFiles,
+                PackagePath = SelectedPackagePath,
+                NewSoftDirPath = SelectedNewSoftDirPath,
+                //CompressXmlFile = Invoke(() => options.CompressXmlFile),
                 GetVersionHandler = fileConfig.GetFileVersion,
                 GetUpdateMethodHandler = fileConfig.GetFileUpdateMethod,
                 GetVerificationLevelHandler = fileConfig.GetFileVerificationLevel,
-                AllFiles = Invoke(() => fileConfig.AllFiles),
-                PackagePath = SelectedPackagePath
             };
-            builder.Build();
-
-            Invoke(() =>
+            this.Text = "制作中。。";
+            System.Threading.Thread thread = new System.Threading.Thread(new System.Threading.ThreadStart(() =>
             {
-                CurrentUpdateInfo = info;
-                new Dialogs.PackageGenerateResult()
+                builder.Build();
+                this.Invoke(new MethodInvoker(() =>
                 {
-                    PackageResult = builder.Result,
-                    UpdateInfo = info
-                }.ShowDialog();
-            });
+                    this.Text = "制作完成。。";
+                    MessageBox.Show("制作完成");
+                }));
+            }));
+            thread.IsBackground = true;
+            thread.Start();
+            //Invoke(() =>
+            //{
+            //    CurrentUpdateInfo = info;
+            //    new Dialogs.PackageGenerateResult()
+            //    {
+            //        PackageResult = builder.Result,
+            //        UpdateInfo = info
+            //    }.ShowDialog();
+            //});
 
 
         }
@@ -309,7 +326,19 @@ namespace FengSharp.UpdateMaker
             set
             {
                 this.txtPackagePath.Text = value;
-                //TryLoadXml(value);
+                TryLoadXml(value);
+            }
+        }
+
+        /// <summary>
+        /// 主程序位置
+        /// </summary>
+        public string SelectedStartAppPath
+        {
+            get { return this.txtStartApp.Text; }
+            set
+            {
+                this.txtStartApp.Text = value;
             }
         }
         /// <summary>
@@ -377,13 +406,34 @@ namespace FengSharp.UpdateMaker
         {
             if (System.IO.Directory.Exists(txtNewSoftDir.Text))
             {
-                filePreExecute.RootPath = fileAfterExecute.RootPath = this.SelectedNewSoftDirPath;
+                filePreExecute.RootPath = fileAfterExecute.RootPath = this.SelectedNewSoftDirPath = txtNewSoftDir.Text;
             }
         }
 
         private void txtPackagePath_TextChanged(object sender, EventArgs e)
         {
-            //TryLoadXml(txtPackagePath.Text);
+            TryLoadXml(txtPackagePath.Text);
+        }
+        string _lastLoadPath;
+        /// <summary>
+        /// 尝试自动打开升级信息
+        /// </summary>
+        /// <param name="directory"></param>
+        void TryLoadXml(string directory)
+        {
+            if (directory == _lastLoadPath || string.IsNullOrEmpty(directory) || !System.IO.Directory.Exists(directory)) return;
+            _lastLoadPath = directory;
+
+            var fileNames = new[] { "update_c.xml", "update.xml" };
+            foreach (var fn in fileNames)
+            {
+                var updateFile = System.IO.Path.Combine(directory, fn);
+                if (System.IO.File.Exists(updateFile))
+                {
+                    OpenXML(updateFile);
+                    break;
+                }
+            }
         }
         #endregion
 
@@ -391,5 +441,77 @@ namespace FengSharp.UpdateMaker
         {
 
         }
+
+        private void btnBrowseStartApp_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(SelectedNewSoftDirPath))
+            {
+                MessageBox.Show("请先选择新程序目录"); return;
+            }
+            if (!System.IO.Directory.Exists(SelectedNewSoftDirPath))
+            {
+                MessageBox.Show("新程序目录不存在请重新选择"); return;
+            }
+            var open = new OpenFileDialog()
+            {
+                Title = "打开主程序",
+                Filter = "exe信息文件(*.exe)|*.exe"
+            };
+            if (open.ShowDialog() != DialogResult.OK) return;
+            OpenXML(open.FileName);
+        }
+
+        #region 升级项目
+        AuProject _auProject;
+        string _auProjectPath;
+        SaveFileDialog _auProjSaveDlg = new SaveFileDialog()
+        {
+            Filter = "升级项目文件(*.auproj)|*.auproj",
+            Title = "保存升级项目..."
+        };
+
+        OpenFileDialog _auProjOpenDlg = new OpenFileDialog()
+        {
+            Filter = "升级项目文件(*.auproj)|*.auproj",
+            Title = "保存升级项目..."
+        };
+        private void btnSaveProject_Click(object sender, EventArgs e)
+        {
+            _auProject = _auProject ?? new AuProject();
+            _auProject.ApplicationDirectory = txtNewSoftDir.Text;
+            _auProject.DestinationDirectory = txtPackagePath.Text;
+            _auProject.UpdateRtfNotePath = rtfPath.Text;
+
+            if (string.IsNullOrEmpty(_auProjectPath))
+            {
+                if (_auProjSaveDlg.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+                _auProjectPath = _auProjSaveDlg.FileName;
+            }
+            _auProject.Save(_auProjectPath);
+            Information("项目已经保存");
+        }
+        private void btnOpenProject_Click(object sender, EventArgs e)
+        {
+            if (_auProjOpenDlg.ShowDialog() != System.Windows.Forms.DialogResult.OK) return;
+            OpenProject(_auProjOpenDlg.FileName);
+        }
+        void OpenProject(string path)
+        {
+            _auProjectPath = path;
+            _auProject = AuProject.LoadFile(_auProjectPath);
+
+            if (_auProjectPath == null)
+            {
+                Information("打开项目时出错!");
+                return;
+            }
+
+            SelectedNewSoftDirPath = _auProject.ApplicationDirectory;
+            txtPackagePath.Text = _auProject.DestinationDirectory;
+            rtfPath.Text = _auProject.UpdateRtfNotePath;
+
+            TryLoadXml(_auProject.DestinationDirectory);
+        }
+        #endregion
     }
 }
