@@ -16,7 +16,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>..\Publish\Lib\</OutputPath>
+    <OutputPath>..\Publish\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -55,6 +55,12 @@
     <Compile Include="Components\GridView_ShowLine.Designer.cs">
       <DependentUpon>GridView_ShowLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\Form_Exit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Validate\CustomRegexValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Forms\Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Exit.resx">
       <DependentUpon>Form_Exit.cs</DependentUpon>
     </EmbeddedResource>
@@ -77,6 +86,10 @@
     <ProjectReference Include="..\FengSharp.Tool\FengSharp.Tool.csproj">
       <Project>{f9a88bfb-c15b-43a0-bd3f-64399ecd6d98}</Project>
       <Name>FengSharp.Tool</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\FengSharp.WinForm\FengSharp.WinForm.csproj">
+      <Project>{EDB6004D-30D5-4051-ACA8-9B847FB50FEB}</Project>
+      <Name>FengSharp.WinForm</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

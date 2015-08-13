@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.23107.0
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengSharp.WinForm", "FengSharp.WinForm\FengSharp.WinForm.csproj", "{EDB6004D-30D5-4051-ACA8-9B847FB50FEB}"
 EndProject
@@ -9,9 +9,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengSharp.WinForm.Dev", "Fe
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengSharp.Tool", "FengSharp.Tool\FengSharp.Tool.csproj", "{F9A88BFB-C15B-43A0-BD3F-64399ECD6D98}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Test", "Test\Test.csproj", "{17C588AF-A924-461E-958D-0E700788E5F9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengSharp.Update", "FengSharp.Update\FengSharp.Update.csproj", "{5B5B47C9-A280-40FD-800F-696BAB78E535}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClassLibrary1", "ClassLibrary1\ClassLibrary1.csproj", "{D3D559AF-6517-4364-8F20-633CEDD1DB70}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{055C2713-24A3-4C19-A658-EFC22142BE87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,14 +31,14 @@ Global
 		{F9A88BFB-C15B-43A0-BD3F-64399ECD6D98}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F9A88BFB-C15B-43A0-BD3F-64399ECD6D98}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F9A88BFB-C15B-43A0-BD3F-64399ECD6D98}.Release|Any CPU.Build.0 = Release|Any CPU
-		{17C588AF-A924-461E-958D-0E700788E5F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{17C588AF-A924-461E-958D-0E700788E5F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{17C588AF-A924-461E-958D-0E700788E5F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{17C588AF-A924-461E-958D-0E700788E5F9}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D3D559AF-6517-4364-8F20-633CEDD1DB70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D3D559AF-6517-4364-8F20-633CEDD1DB70}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D3D559AF-6517-4364-8F20-633CEDD1DB70}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D3D559AF-6517-4364-8F20-633CEDD1DB70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B5B47C9-A280-40FD-800F-696BAB78E535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B5B47C9-A280-40FD-800F-696BAB78E535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B5B47C9-A280-40FD-800F-696BAB78E535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B5B47C9-A280-40FD-800F-696BAB78E535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{055C2713-24A3-4C19-A658-EFC22142BE87}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{055C2713-24A3-4C19-A658-EFC22142BE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{055C2713-24A3-4C19-A658-EFC22142BE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{055C2713-24A3-4C19-A658-EFC22142BE87}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

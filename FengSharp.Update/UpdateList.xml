@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="gb2312" ?>
+<AutoUpdater>
+	<Description>ConsoleApplication3 autoUpdate</Description>
+	<Updater>
+		<Url>http://localhost/Mytest/</Url>
+		<LastUpdateTime>2015-07-28</LastUpdateTime>
+	</Updater>
+	<Application applicationId = "一卡通管理系统">
+		<EntryPoint>一卡通管理系统.exe</EntryPoint>
+		<Location>..\..\</Location>
+		<Version>1.0.0.0</Version>
+	</Application>
+	<Files>
+		<File Ver="1.0.0.0" Name= "新建文本文档.txt" />
+    <File Ver="1.0.0.0" Name= "ConsoleApplication3.exe" />
+	</Files>
+</AutoUpdater>
