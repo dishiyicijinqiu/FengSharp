@@ -1,4 +1,7 @@
-﻿namespace FengSharp.UpdateMaker.Controls
+﻿using System;
+using FengSharp.Update;
+
+namespace FengSharp.UpdateMaker.Controls
 {
     partial class FileConfiguration
     {
@@ -134,5 +137,6 @@
         private FileSysTree folderTree;
         private System.Windows.Forms.Label label1;
         private FileListView filelist;
+
     }
 }
