@@ -11,7 +11,7 @@
 		<Version>1.0.0.0</Version>
 	</Application>
 	<Files>
-    <File Version="1.0.0.0" FileName= "新建文本文档.txt" SavePath="" UpdatePath="" FileSize=""/>
-    <File Version="1.0.0.0" FileName= "ConsoleApplication3.exe" SavePath="" UpdatePath="" FileSize=""/>
+    <File Version="1.0.0.0" FileName= "新建文本文档.txt" SavePath="" UpdatePath="" FileSize="50"/>
+    <File Version="1.0.0.0" FileName= "ConsoleApplication3.exe" SavePath="" UpdatePath="" FileSize="5120"/>
 	</Files>
 </AutoUpdater>

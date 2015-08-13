@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengSharp.Update", "FengSha
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WindowsFormsApplication1", "WindowsFormsApplication1\WindowsFormsApplication1.csproj", "{055C2713-24A3-4C19-A658-EFC22142BE87}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FengSharp.UpdateMaker", "FengSharp.UpdateMaker\FengSharp.UpdateMaker.csproj", "{8DC2D40A-1D65-4EB0-8005-DCFF48260AE4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{055C2713-24A3-4C19-A658-EFC22142BE87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{055C2713-24A3-4C19-A658-EFC22142BE87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{055C2713-24A3-4C19-A658-EFC22142BE87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DC2D40A-1D65-4EB0-8005-DCFF48260AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DC2D40A-1D65-4EB0-8005-DCFF48260AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DC2D40A-1D65-4EB0-8005-DCFF48260AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DC2D40A-1D65-4EB0-8005-DCFF48260AE4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -5,9 +5,15 @@
 		<Url>http://localhost/Mytest/</Url>
 		<LastUpdateTime>2015-07-28</LastUpdateTime>
 	</Updater>
+  
+  <FileExecuteBefore>测试升级项目.exe</FileExecuteBefore>
+  <ExecuteArgumentBefore>-a</ExecuteArgumentBefore>
+  <FileExecuteAfter>init.bat</FileExecuteAfter>
+  <ExecuteArgumentAfter>-b</ExecuteArgumentAfter>
+  
 	<Application applicationId = "一卡通管理系统">
 		<EntryPoint>一卡通管理系统.exe</EntryPoint>
-		<Location>..\..\</Location>
+		<Location>..\..\一卡通管理系统.exe</Location>
 		<Version>1.0.0.0</Version>
 	</Application>
 	<Files>
