@@ -457,8 +457,9 @@ namespace FengSharp.UpdateMaker
                 Title = "打开主程序",
                 Filter = "exe信息文件(*.exe)|*.exe"
             };
+            open.InitialDirectory = this.SelectedNewSoftDirPath;
             if (open.ShowDialog() != DialogResult.OK) return;
-            OpenXML(open.FileName);
+            this.SelectedStartAppPath = open.FileName;
         }
 
         #region 升级项目
