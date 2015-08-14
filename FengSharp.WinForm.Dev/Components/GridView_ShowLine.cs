@@ -8,22 +8,6 @@ using System.Text;
 
 namespace FengSharp.WinForm.Dev.Components
 {
-    //public partial class GridView_ShowLine : Component
-    //{
-    //    public GridView_ShowLine()
-    //    {
-    //        InitializeComponent();
-    //    }
-
-    //    public GridView_ShowLine(IContainer container)
-    //    {
-    //        container.Add(this);
-
-    //        InitializeComponent();
-    //    }
-    //}
-
-
     [ToolboxItem(true)]
     [Description("是否应用时间样式。")]
     [ProvideProperty("ShowLineNo", typeof(GridView))]
