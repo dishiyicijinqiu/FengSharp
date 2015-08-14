@@ -52,6 +52,10 @@ namespace FengSharp.WinForm.Dev.Components
             }
             return false;
         }
+        [Category("扩展")]
+        [Description("行号格式化字符串")]
+        [DefaultValue("{0}")]
+        public string ShowLineNoString { get; set; }
         public void SetShowLineNo(GridView dgv, bool isApply)
         {
             if (!StyleList.ContainsKey(dgv))
@@ -77,7 +81,7 @@ namespace FengSharp.WinForm.Dev.Components
         {
             if (e.Info.IsRowIndicator && e.RowHandle >= 0)
             {
-                e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                e.Info.DisplayText = string.Format(ShowLineNoString, (e.RowHandle + 1));
             }
         }
     }
