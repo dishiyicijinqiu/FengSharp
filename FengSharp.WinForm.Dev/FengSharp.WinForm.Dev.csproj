@@ -56,6 +56,12 @@
     <Compile Include="Components\GridView_ShowLine.Designer.cs">
       <DependentUpon>GridView_ShowLine.cs</DependentUpon>
     </Compile>
+    <Compile Include="Components\TreeList_BlockSelector.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\TreeList_BlockSelector.Designer.cs">
+      <DependentUpon>TreeList_BlockSelector.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\TreeList_HotTrack.cs">
       <SubType>Component</SubType>
     </Compile>

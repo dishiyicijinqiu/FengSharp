@@ -30,7 +30,33 @@ namespace FengSharp.WinForm.Dev.Components
         {
             return (extendee is TreeList);
         }
-
+        #region 行跟踪背景色
+        [Category("扩展")]
+        [Description("行跟踪背景色")]
+        public Color GetHotTrackColor(TreeList treeList)
+        {
+            if (List.ContainsKey(treeList))
+            {
+                return List[treeList].HotTrackColor;
+            }
+            return Color.FromArgb(213, 232, 255);
+        }
+        public void SetHotTrackColor(TreeList treeList, Color hotTrackColor)
+        {
+            if (!List.ContainsKey(treeList))
+            {
+                List.Add(treeList, new HotTrackPara(treeList)
+                {
+                    HotTrackColor = hotTrackColor,
+                });
+            }
+            else
+            {
+                List[treeList].HotTrackColor = hotTrackColor;
+            }
+        }
+        #endregion
+        #region 是否使用行跟踪
         [Category("扩展")]
         [Description("是否使用行跟踪")]
         public bool GetEnableHotTrack(TreeList treeList)
@@ -96,34 +122,7 @@ namespace FengSharp.WinForm.Dev.Components
                     e.Appearance.BackColor = para.HotTrackColor;
             }
         }
-
-
-
-        [Category("扩展")]
-        [Description("是否使用行跟踪")]
-        public Color GetHotTrackColor(TreeList treeList)
-        {
-            if (List.ContainsKey(treeList))
-            {
-                return List[treeList].HotTrackColor;
-            }
-            return Color.LightBlue;
-        }
-        public void SetHotTrackColor(TreeList treeList, Color hotTrackColor)
-        {
-            if (!List.ContainsKey(treeList))
-            {
-                List.Add(treeList, new HotTrackPara(treeList)
-                {
-                    HotTrackColor = hotTrackColor,
-                });
-            }
-            else
-            {
-                List[treeList].HotTrackColor = hotTrackColor;
-            }
-        }
-
+        #endregion
     }
     public class HotTrackPara
     {
@@ -145,7 +144,7 @@ namespace FengSharp.WinForm.Dev.Components
                 enableHotTrack = value;
             }
         }
-        private Color hotTrackColor = Color.LightBlue;
+        private Color hotTrackColor = Color.FromArgb(213, 232, 255);
         [DefaultValue(typeof(Color), "LightBlue")]
         public Color HotTrackColor
         {
