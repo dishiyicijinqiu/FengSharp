@@ -11,6 +11,7 @@ namespace FengSharp.WinForm.Dev.Components
     [ToolboxItem(true)]
     [Description("显示行号")]
     [ProvideProperty("ShowLineNo", typeof(GridView))]
+    [ProvideProperty("LineNoFormatString", typeof(GridView))]
     public partial class GridView_ShowLine : Component, IExtenderProvider
     {
         #region fileds

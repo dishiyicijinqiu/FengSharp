@@ -11,6 +11,7 @@ namespace FengSharp.WinForm.Dev.Components
     [ToolboxItem(true)]
     [Description("显示行号")]
     [ProvideProperty("ShowLineNo", typeof(TreeList))]
+    [ProvideProperty("LineNoFormatString", typeof(TreeList))]
     public partial class TreeList_ShowLine : Component, IExtenderProvider
     {
         #region fileds
