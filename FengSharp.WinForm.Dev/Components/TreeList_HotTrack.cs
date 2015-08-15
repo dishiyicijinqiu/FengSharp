@@ -132,8 +132,32 @@ namespace FengSharp.WinForm.Dev.Components
         {
             treelist = _treelist;
         }
-        public bool EnableHotTrack { get; set; }
-        public Color HotTrackColor { get; set; }
+        private bool enableHotTrack = false;
+        [DefaultValue(false)]
+        public bool EnableHotTrack
+        {
+            get
+            {
+                return enableHotTrack;
+            }
+            set
+            {
+                enableHotTrack = value;
+            }
+        }
+        private Color hotTrackColor = Color.LightBlue;
+        [DefaultValue(typeof(Color), "LightBlue")]
+        public Color HotTrackColor
+        {
+            get
+            {
+                return hotTrackColor;
+            }
+            set
+            {
+                hotTrackColor = value;
+            }
+        }
 
         private TreeListNode hotTrackNode = null;
 
