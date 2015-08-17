@@ -13,6 +13,11 @@ namespace WindowsFormsApplication2
         [STAThread]
         static void Main()
         {
+            #region 注册DevExpress皮肤
+            DevExpress.UserSkins.BonusSkins.Register();
+            DevExpress.Skins.SkinManager.EnableFormSkins();
+            DevExpress.LookAndFeel.UserLookAndFeel.Default.SetSkinStyle("Office 2010 Blue");
+            #endregion
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new RibbonForm1());

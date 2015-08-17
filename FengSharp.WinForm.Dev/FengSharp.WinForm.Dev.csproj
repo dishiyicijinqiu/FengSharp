@@ -50,17 +50,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Components\GridView_MouseMulSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Components\GridView_MouseMulSelect.Designer.cs">
+      <DependentUpon>GridView_MouseMulSelect.cs</DependentUpon>
+    </Compile>
     <Compile Include="Components\GridView_ShowLine.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Components\GridView_ShowLine.Designer.cs">
       <DependentUpon>GridView_ShowLine.cs</DependentUpon>
     </Compile>
-    <Compile Include="Components\TreeList_BlockSelector.cs">
+    <Compile Include="Components\TreeList_MouseMulSelect.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Components\TreeList_BlockSelector.Designer.cs">
-      <DependentUpon>TreeList_BlockSelector.cs</DependentUpon>
+    <Compile Include="Components\TreeList_MouseMulSelect.Designer.cs">
+      <DependentUpon>TreeList_MouseMulSelect.cs</DependentUpon>
     </Compile>
     <Compile Include="Components\TreeList_HotTrack.cs">
       <SubType>Component</SubType>

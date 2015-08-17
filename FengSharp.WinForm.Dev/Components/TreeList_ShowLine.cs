@@ -107,7 +107,7 @@ namespace FengSharp.WinForm.Dev.Components
             return (extendee is TreeList);
         }
     }
-    public class TreeListShowLine
+    internal class TreeListShowLine
     {
         private bool enableLineNo = true;
         /// <summary>

@@ -1,6 +1,6 @@
 ﻿namespace FengSharp.WinForm.Dev.Components
 {
-    partial class TreeList_BlockSelector
+    partial class GridView_MouseMulSelect
     {
         /// <summary>
         /// Required designer variable.

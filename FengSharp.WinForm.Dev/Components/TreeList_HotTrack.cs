@@ -124,7 +124,7 @@ namespace FengSharp.WinForm.Dev.Components
         }
         #endregion
     }
-    public class HotTrackPara
+    internal class HotTrackPara
     {
         private TreeList treelist;
         public HotTrackPara(TreeList _treelist)

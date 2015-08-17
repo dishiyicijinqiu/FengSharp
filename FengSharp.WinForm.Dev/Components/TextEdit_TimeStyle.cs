@@ -6,48 +6,50 @@ namespace FengSharp.WinForm.Dev.Components
 {
 
     [ToolboxItem(true)]
-    [Description("是否应用时间样式。")]
-    [ProvideProperty("TimeStyleIsApply", typeof(TextEdit))]
+    [Description("时间样式。")]
+    [ProvideProperty("EnableTimeStyle", typeof(TextEdit))]
+    [ProvideProperty("TimeStyleFormatString", typeof(TextEdit))]
     public class TextEdit_TimeStyle : Component, IExtenderProvider
     {
-        private Dictionary<TextEdit, bool> TimeStyleList = null;
+        private Dictionary<TextEdit, TextEdit_TimeStylePara> list = null;
         public TextEdit_TimeStyle()
         {
-            TimeStyleList = new Dictionary<TextEdit, bool>();
+            list = new Dictionary<TextEdit, TextEdit_TimeStylePara>();
         }
 
         public TextEdit_TimeStyle(IContainer container)
         {
             container.Add(this);
-            TimeStyleList = new Dictionary<TextEdit, bool>();
+            list = new Dictionary<TextEdit, TextEdit_TimeStylePara>();
         }
 
         [Category("扩展")]
         [Description("是否应用时间样式")]
-        public bool GetTimeStyleIsApply(TextEdit textEdit)
+        public bool GetEnableTimeStyle(TextEdit textEdit)
         {
-            if (TimeStyleList.ContainsKey(textEdit))
+            if (list.ContainsKey(textEdit))
             {
-                return (bool)TimeStyleList[textEdit];
+                return list[textEdit].EnableTimeStyle;
             }
             return false;
         }
-        public void SetTimeStyleIsApply(TextEdit textEdit, bool isApply)
+        public void SetEnableTimeStyle(TextEdit textEdit, bool enableTimeStyle)
         {
-            if (!TimeStyleList.ContainsKey(textEdit))
+            if (!list.ContainsKey(textEdit))
             {
-                TimeStyleList.Add(textEdit, isApply);
+                list.Add(textEdit, new TextEdit_TimeStylePara());
             }
             else
             {
-                TimeStyleList[textEdit] = isApply;
+                list[textEdit].EnableTimeStyle = enableTimeStyle;
             }
-            if (isApply)
+            if (enableTimeStyle)
             {
                 textEdit.Properties.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                 textEdit.Properties.EditFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
                 textEdit.Properties.Mask.MaskType = DevExpress.XtraEditors.Mask.MaskType.DateTime;
-                if (string.IsNullOrWhiteSpace(TimeStyleFormatString))
+                string formatstring = list[textEdit].TimeStyleFormatString;
+                if (string.IsNullOrWhiteSpace(formatstring))
                 {
                     textEdit.Properties.DisplayFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
                     textEdit.Properties.EditFormat.FormatString = "yyyy-MM-dd HH:mm:ss";
@@ -55,20 +57,70 @@ namespace FengSharp.WinForm.Dev.Components
                 }
                 else
                 {
-                    textEdit.Properties.DisplayFormat.FormatString = TimeStyleFormatString;
-                    textEdit.Properties.EditFormat.FormatString = TimeStyleFormatString;
-                    textEdit.Properties.Mask.EditMask = TimeStyleFormatString;
+                    textEdit.Properties.DisplayFormat.FormatString = formatstring;
+                    textEdit.Properties.EditFormat.FormatString = formatstring;
+                    textEdit.Properties.Mask.EditMask = formatstring;
                 }
             }
         }
+        [Category("扩展")]
+        [Description("时间样式的格式")]
+        public string GetTimeStyleFormatString(TextEdit textEdit)
+        {
+            if (list.ContainsKey(textEdit))
+            {
+                return list[textEdit].TimeStyleFormatString;
+            }
+            return "yyyy-MM-dd HH:mm:ss";
+        }
+        public void SetTimeStyleFormatString(TextEdit textEdit, string timeStyleFormatString)
+        {
+            if (!list.ContainsKey(textEdit))
+            {
+                list.Add(textEdit, new TextEdit_TimeStylePara());
+            }
+            else
+            {
+                list[textEdit].TimeStyleFormatString = timeStyleFormatString;
+            }
+        }
+
         public bool CanExtend(object extendee)
         {
             return (extendee is TextEdit);
         }
-        [Category("扩展")]
-        [Description("时间样式的格式")]
-        [DefaultValue("yyyy-MM-dd HH:mm:ss")]
-        public string TimeStyleFormatString { get; set; }
+    }
+    internal class TextEdit_TimeStylePara
+    {
+        private bool enableTimeStyle = false;
+        /// <summary>
+        /// 是否显示行号
+        /// </summary> 
+        [DefaultValue(true)]
+        public bool EnableTimeStyle
+        {
+            get
+            {
+                return enableTimeStyle;
+            }
+            set
+            {
+                enableTimeStyle = value;
+            }
+        }
 
+        private string timeStyleFormatString = "yyyy-MM-dd HH:mm:ss";
+        [DefaultValue("yyyy-MM-dd HH:mm:ss")]
+        public string TimeStyleFormatString
+        {
+            get
+            {
+                return timeStyleFormatString;
+            }
+            set
+            {
+                timeStyleFormatString = value;
+            }
+        }
     }
 }

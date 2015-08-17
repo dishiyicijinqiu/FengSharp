@@ -106,7 +106,7 @@ namespace FengSharp.WinForm.Dev.Components
             }
         }
     }
-    public class GridViewShowLine
+    internal class GridViewShowLine
     {
         private bool enableLineNo = true;
         /// <summary>
