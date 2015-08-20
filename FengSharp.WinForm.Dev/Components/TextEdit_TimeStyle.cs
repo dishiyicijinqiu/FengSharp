@@ -37,7 +37,7 @@ namespace FengSharp.WinForm.Dev.Components
         {
             if (!list.ContainsKey(textEdit))
             {
-                list.Add(textEdit, new TextEdit_TimeStylePara());
+                list.Add(textEdit, new TextEdit_TimeStylePara() { EnableTimeStyle = enableTimeStyle });
             }
             else
             {
@@ -77,7 +77,7 @@ namespace FengSharp.WinForm.Dev.Components
         {
             if (!list.ContainsKey(textEdit))
             {
-                list.Add(textEdit, new TextEdit_TimeStylePara());
+                list.Add(textEdit, new TextEdit_TimeStylePara() { TimeStyleFormatString = timeStyleFormatString });
             }
             else
             {

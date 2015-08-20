@@ -55,7 +55,7 @@ namespace FengSharp.WinForm.Dev.Components
         {
             if (!list.ContainsKey(gridview))
             {
-                list.Add(gridview, new GridView_MouseMulSelectPara());
+                list.Add(gridview, new GridView_MouseMulSelectPara() { EnableMouseMulSelect = enableMouseMulSelect });
             }
             else
             {

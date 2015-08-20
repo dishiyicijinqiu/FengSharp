@@ -59,7 +59,7 @@ namespace FengSharp.WinForm.Dev.Components
         {
             if (!list.ContainsKey(treeList))
             {
-                list.Add(treeList, new TreeList_MouseMulSelectPara());
+                list.Add(treeList, new TreeList_MouseMulSelectPara() { EnableMouseMulSelect = enableMouseMulSelect });
             }
             else
             {
