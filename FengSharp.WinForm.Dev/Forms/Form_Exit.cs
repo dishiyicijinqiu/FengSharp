@@ -11,7 +11,7 @@ namespace FengSharp.WinForm.Dev.Forms
 {
     public partial class Form_Exit : DevExpress.XtraEditors.XtraForm
     {
-        bool isBtnClick = false;
+        public int MyProperty { get; set; }
         public Form_Exit()
         {
             InitializeComponent();
@@ -19,20 +19,16 @@ namespace FengSharp.WinForm.Dev.Forms
 
         private void btnYes_Click(object sender, EventArgs e)
         {
-
-            isBtnClick = true;
             this.DialogResult = System.Windows.Forms.DialogResult.Yes;
         }
 
         private void btnNo_Click(object sender, EventArgs e)
         {
-            isBtnClick = true;
             this.DialogResult = System.Windows.Forms.DialogResult.Cancel;
         }
 
         private void btnReTry_Click(object sender, EventArgs e)
         {
-            isBtnClick = true;
             this.DialogResult = System.Windows.Forms.DialogResult.Retry;
         }
 

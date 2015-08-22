@@ -39,7 +39,7 @@
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(113, 36);
+            this.labelControl1.Location = new System.Drawing.Point(100, 22);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(108, 13);
             this.labelControl1.TabIndex = 14;
@@ -48,7 +48,7 @@
             // pictureEdit1
             // 
             this.pictureEdit1.EditValue = ((object)(resources.GetObject("pictureEdit1.EditValue")));
-            this.pictureEdit1.Location = new System.Drawing.Point(65, 25);
+            this.pictureEdit1.Location = new System.Drawing.Point(52, 11);
             this.pictureEdit1.Name = "pictureEdit1";
             this.pictureEdit1.Properties.AllowFocused = false;
             this.pictureEdit1.Properties.Appearance.BackColor = System.Drawing.Color.Transparent;
@@ -61,17 +61,21 @@
             // 
             // btnReTry
             // 
-            this.btnReTry.Location = new System.Drawing.Point(222, 76);
+            this.btnReTry.Image = ((System.Drawing.Image)(resources.GetObject("btnReTry.Image")));
+            this.btnReTry.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnReTry.Location = new System.Drawing.Point(209, 56);
             this.btnReTry.Name = "btnReTry";
             this.btnReTry.Size = new System.Drawing.Size(81, 26);
             this.btnReTry.TabIndex = 12;
-            this.btnReTry.Text = "重新登录(&R)";
+            this.btnReTry.Text = "重新登录";
             this.btnReTry.Click += new System.EventHandler(this.btnReTry_Click);
             // 
             // btnNo
             // 
             this.btnNo.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnNo.Location = new System.Drawing.Point(126, 76);
+            this.btnNo.Image = ((System.Drawing.Image)(resources.GetObject("btnNo.Image")));
+            this.btnNo.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnNo.Location = new System.Drawing.Point(113, 56);
             this.btnNo.Name = "btnNo";
             this.btnNo.Size = new System.Drawing.Size(81, 26);
             this.btnNo.TabIndex = 11;
@@ -80,7 +84,9 @@
             // 
             // btnYes
             // 
-            this.btnYes.Location = new System.Drawing.Point(27, 76);
+            this.btnYes.Image = ((System.Drawing.Image)(resources.GetObject("btnYes.Image")));
+            this.btnYes.ImageToTextAlignment = DevExpress.XtraEditors.ImageAlignToText.LeftCenter;
+            this.btnYes.Location = new System.Drawing.Point(14, 56);
             this.btnYes.Name = "btnYes";
             this.btnYes.Size = new System.Drawing.Size(81, 26);
             this.btnYes.TabIndex = 10;
@@ -92,7 +98,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnNo;
-            this.ClientSize = new System.Drawing.Size(330, 135);
+            this.ClientSize = new System.Drawing.Size(299, 99);
             this.Controls.Add(this.labelControl1);
             this.Controls.Add(this.pictureEdit1);
             this.Controls.Add(this.btnReTry);
@@ -102,6 +108,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Form_Exit";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "提示";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form_Exit_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pictureEdit1.Properties)).EndInit();

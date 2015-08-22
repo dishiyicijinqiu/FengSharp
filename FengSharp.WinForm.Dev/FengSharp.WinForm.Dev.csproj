@@ -96,6 +96,11 @@
     <Compile Include="Components\TextEdit_TimeStyle.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Validate\CustomRegexValidationRule.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -104,6 +109,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\Form_Exit.resx">
       <DependentUpon>Form_Exit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Properties\licenses.licx" />
   </ItemGroup>

@@ -55,11 +55,8 @@ namespace WindowsFormsApplication2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            foreach (var item in treeList1.Selection)
-            {
-
-            }
-            MessageBox.Show(treeList1.Selection.Count.ToString());
+            FengSharp.WinForm.Dev.Forms.Form_Exit form = new FengSharp.WinForm.Dev.Forms.Form_Exit();
+            var diaResult = form.ShowDialog();
 
         }
 
