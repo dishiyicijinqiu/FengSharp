@@ -99,10 +99,10 @@ namespace FengSharp.WinForm.Dev.Components
                 var gv = sender as GridView;
                 if (StyleList.ContainsKey(gv))
                 {
-                    e.Info.DisplayText = string.Format(StyleList[gv].LineNoFormatString, e.RowHandle + 1);
+                    e.Info.DisplayText = string.Format(StyleList[gv].LineNoFormatString, e.RowHandle + 1) + e.Info.DisplayText;
                 }
                 else
-                    e.Info.DisplayText = (e.RowHandle + 1).ToString();
+                    e.Info.DisplayText = (e.RowHandle + 1).ToString() + e.Info.DisplayText;
             }
         }
     }
